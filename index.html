@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOA.26220</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum:#241533;
+    --plum-deep:#170D22;
+    --gold:#E8B647;
+    --coral:#FF6F91;
+    --cream:#F5EFE6;
+    --line: rgba(245,239,230,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(255,111,145,0.16), transparent 60%),
+      radial-gradient(900px 500px at 100% 10%, rgba(232,182,71,0.12), transparent 55%),
+      var(--plum-deep);
+    color:var(--cream);
+    font-family:'Space Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding:72px 0 48px;text-align:center;position:relative;}
+  .badge{
+    display:inline-block;
+    padding:6px 18px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:28px;
+  }
+  h1.namecard{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:clamp(64px,14vw,140px);
+    line-height:0.9;
+    margin:0;
+    letter-spacing:0.02em;
+    background:linear-gradient(180deg, var(--cream) 0%, var(--gold) 65%, var(--coral) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter:drop-shadow(0 6px 30px rgba(232,182,71,0.25));
+  }
+  .tagline{
+    font-size:18px;
+    max-width:520px;
+    margin:20px auto 0;
+    color:rgba(245,239,230,0.75);
+  }
+
+  /* ---------- HYPE STICKERS ---------- */
+  .stickers{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center;
+    margin-top:36px;
+  }
+  .sticker{
+    font-size:14px;
+    padding:10px 16px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line);
+    position:relative;
+    transform:rotate(var(--r,0deg));
+    transition:transform .25s ease, background .25s ease;
+  }
+  .sticker:nth-child(odd){--r:-2deg;}
+  .sticker:nth-child(even){--r:2deg;}
+  .sticker:hover{transform:rotate(0deg) scale(1.05);background:rgba(232,182,71,0.14);}
+
+  /* ---------- SECTION LABELS ---------- */
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:10px;
+  }
+  section{padding:56px 0;border-top:1px solid var(--line);}
+  h2{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:clamp(32px,5vw,48px);
+    letter-spacing:0.01em;
+    margin:0 0 28px;
+  }
+
+  /* ---------- TIKTOK GRID ---------- */
+  .tiktok-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:24px;
+  }
+  .tiktok-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:14px;
+    overflow:hidden;
+  }
+  .tiktok-card blockquote{margin:0;}
+
+  /* ---------- DISCORD CARD ---------- */
+  .discord-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+    background:linear-gradient(135deg, rgba(255,111,145,0.14), rgba(232,182,71,0.08));
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:28px 32px;
+  }
+  .discord-card .handle{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:32px;
+    letter-spacing:0.02em;
+  }
+  .discord-card p{margin:6px 0 0;color:rgba(245,239,230,0.7);font-size:14px;}
+  .btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:999px;
+    background:var(--gold);
+    color:var(--plum-deep);
+    font-weight:600;
+    text-decoration:none;
+    font-size:14px;
+    transition:transform .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+
+  /* ---------- LINKS ---------- */
+  .links-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:16px;
+  }
+  .link-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 18px;
+    text-decoration:none;
+    color:var(--cream);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .link-card:hover{transform:translateY(-2px);background:rgba(232,182,71,0.1);}
+  .link-card .link-name{font-weight:600;font-size:15px;}
+  .link-card .arrow{color:var(--gold);}
+
+  /* ---------- FOOTER / ADMIN ---------- */
+  footer{
+    padding:40px 0 60px;
+    text-align:center;
+    color:rgba(245,239,230,0.35);
+    font-size:12px;
+  }
+  #admin-gear{
+    position:fixed;
+    bottom:18px;
+    right:18px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,0.04);
+    color:var(--cream);
+    cursor:pointer;
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0.5;
+    transition:opacity .2s ease;
+  }
+  #admin-gear:hover{opacity:1;}
+
+  #admin-panel{
+    position:fixed;
+    inset:0;
+    background:rgba(10,6,15,0.7);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:50;
+  }
+  #admin-panel.open{display:flex;}
+  .panel-box{
+    background:var(--plum);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:28px;
+    max-width:420px;
+    width:100%;
+    max-height:85vh;
+    overflow-y:auto;
+  }
+  .panel-box h3{margin-top:0;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.02em;}
+  .panel-box input, .panel-box textarea{
+    width:100%;
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line);
+    color:var(--cream);
+    border-radius:8px;
+    padding:10px 12px;
+    font-family:inherit;
+    font-size:14px;
+    margin-bottom:12px;
+  }
+  .panel-box label{font-size:12px;color:rgba(245,239,230,0.6);display:block;margin-bottom:4px;}
+  .panel-row{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;}
+  .btn-ghost{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--cream);
+    padding:10px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:13px;
+  }
+  .btn-solid{
+    background:var(--gold);
+    border:none;
+    color:var(--plum-deep);
+    padding:10px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    font-weight:600;
+    font-family:inherit;
+    font-size:13px;
+  }
+  #status-msg{font-size:12px;color:var(--coral);min-height:16px;}
+  .panel-box select{
+    width:100%;
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line);
+    color:var(--cream);
+    border-radius:8px;
+    padding:10px 12px;
+    font-family:inherit;
+    font-size:14px;
+    margin-bottom:12px;
+  }
+  .panel-box h4{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--gold);
+    margin:20px 0 10px;
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
+  .panel-box h4:first-of-type{border-top:none;padding-top:0;margin-top:0;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge" id="badge-text">Profil officiel</span>
+    <img id="profile-pic" src="" alt="" style="display:none;width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);margin-bottom:20px;"/>
+    <h1 class="namecard" id="pseudo">MOA.26220</h1>
+    <p class="tagline" id="tagline">L'algorithme la connaît déjà. Toi, tu es juste en retard.</p>
+    <div class="stickers" id="stickers">
+      <span class="sticker">👑 la référence</span>
+      <span class="sticker">🔥 jamais hors-jeu</span>
+      <span class="sticker">✨ main character energy</span>
+      <span class="sticker">🏆 goat officieux</span>
+    </div>
+  </div>
+</header>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="eyebrow">Fyp direct</div>
+    <h2>Les vidéos à voir absolument</h2>
+    <div class="tiktok-grid" id="tiktok-grid"></div>
+  </div>
+</section>
+
+<section id="discord">
+  <div class="wrap">
+    <div class="eyebrow">Le squad</div>
+    <h2>Rejoins-la</h2>
+    <div class="discord-card">
+      <div>
+        <div class="handle" id="discord-handle">Moa.26220</div>
+        <p id="discord-desc">Le serveur où tout se passe. Ne reste pas spectateur.</p>
+      </div>
+      <a class="btn" id="discord-btn" href="https://discord.com/users/Moa.26220" target="_blank">Ouvrir Discord</a>
+    </div>
+  </div>
+</section>
+
+<section id="links">
+  <div class="wrap">
+    <div class="eyebrow">Ailleurs</div>
+    <h2>Mes liens</h2>
+    <div class="links-grid" id="links-grid">
+      <p id="links-empty" style="color:rgba(245,239,230,0.4);font-size:14px;">Aucun lien ajouté pour l'instant.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="footer-text">
+  Page officielle de MOA.26220 — pas de copie, y'a qu'un seul original.
+</footer>
+
+<div id="admin-gear" title="Mode admin">⚙</div>
+
+<div id="admin-panel">
+  <div class="panel-box" id="panel-content">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<script async id="tiktok-embed-script" src="https://www.tiktok.com/embed.js"></script>
+<script>
+(function(){
+  const ADMIN_CODE = "1979";
+  const gear = document.getElementById('admin-gear');
+  const panel = document.getElementById('admin-panel');
+  const content = document.getElementById('panel-content');
+  let unlocked = false;
+
+  const DISCORD_CLIENT_ID = "1524211118334284018";
+  const DISCORD_ALLOWED_USERNAME = "moa.26220";
+
+  function getRedirectUri(){
+    return window.location.origin + window.location.pathname;
+  }
+
+  function initiateDiscordLogin(){
+    const redirect = encodeURIComponent(getRedirectUri());
+    const url = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${redirect}&response_type=token&scope=identify`;
+    window.location.href = url;
+  }
+
+  async function checkDiscordCallback(){
+    if(!window.location.hash.includes('access_token')) return false;
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const token = params.get('access_token');
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+    if(!token) return false;
+
+    panel.classList.add('open');
+    content.innerHTML = `<h3>Connexion Discord</h3><p style="font-size:13px;color:rgba(245,239,230,0.7);">Vérification de ton compte...</p>`;
+
+    try{
+      const res = await fetch('https://discord.com/api/users/@me', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if(!res.ok) throw new Error('bad response');
+      const user = await res.json();
+      const username = (user.username || '').toLowerCase();
+      if(username === DISCORD_ALLOWED_USERNAME){
+        unlocked = true;
+        renderEditor();
+      } else {
+        content.innerHTML = `<h3>Accès refusé</h3><p style="font-size:13px;color:rgba(245,239,230,0.7);">Ce compte Discord (${user.username}) n'est pas autorisé.</p><div class="panel-row"><button class="btn-ghost" id="cancel-btn">Fermer</button></div>`;
+        document.getElementById('cancel-btn').onclick = closePanel;
+      }
+    }catch(e){
+      content.innerHTML = `<h3>Erreur</h3><p style="font-size:13px;color:rgba(245,239,230,0.7);">Impossible de vérifier ton compte Discord. Réessaie.</p><div class="panel-row"><button class="btn-ghost" id="cancel-btn">Fermer</button></div>`;
+      document.getElementById('cancel-btn').onclick = closePanel;
+    }
+    return true;
+  }
+
+  function renderLogin(){
+    content.innerHTML = `
+      <h3>Mode admin</h3>
+      <button class="btn-solid" id="discord-login-btn" style="width:100%;margin-bottom:16px;background:#5865F2;color:#fff;">Se connecter avec Discord</button>
+      <p style="font-size:11px;color:rgba(245,239,230,0.4);text-align:center;margin:-8px 0 16px;">— ou —</p>
+      <label for="code-input">Code d'accès</label>
+      <input type="password" id="code-input" placeholder="••••" maxlength="8" />
+      <div id="status-msg"></div>
+      <div class="panel-row">
+        <button class="btn-ghost" id="cancel-btn">Annuler</button>
+        <button class="btn-solid" id="confirm-btn">Valider</button>
+      </div>
+    `;
+    document.getElementById('discord-login-btn').onclick = initiateDiscordLogin;
+    document.getElementById('cancel-btn').onclick = closePanel;
+    document.getElementById('confirm-btn').onclick = checkCode;
+    document.getElementById('code-input').addEventListener('keydown', e=>{
+      if(e.key === 'Enter') checkCode();
+    });
+  }
+
+  function checkCode(){
+    const val = document.getElementById('code-input').value;
+    if(val === ADMIN_CODE){
+      unlocked = true;
+      renderEditor();
+    } else {
+      document.getElementById('status-msg').textContent = "Code incorrect.";
+    }
+  }
+
+  const THEMES = {
+    plum:   { plum:'#241533', plumDeep:'#170D22', gold:'#E8B647', coral:'#FF6F91', cream:'#F5EFE6', label:'Prune (défaut)' },
+    ocean:  { plum:'#0E2A3D', plumDeep:'#081A26', gold:'#5AD1E6', coral:'#7EE8C7', cream:'#EAF7F9', label:'Océan' },
+    sunset: { plum:'#3D1A1A', plumDeep:'#240F0F', gold:'#FFB347', coral:'#FF5C5C', cream:'#FFF3E6', label:'Coucher de soleil' },
+    mono:   { plum:'#1C1C1C', plumDeep:'#101010', gold:'#E8E8E8', coral:'#A0A0A0', cream:'#F5F5F5', label:'Mono' },
+  };
+
+  function applyTheme(name){
+    const t = THEMES[name] || THEMES.plum;
+    const root = document.documentElement.style;
+    root.setProperty('--plum', t.plum);
+    root.setProperty('--plum-deep', t.plumDeep);
+    root.setProperty('--gold', t.gold);
+    root.setProperty('--coral', t.coral);
+    root.setProperty('--cream', t.cream);
+  }
+
+  function reloadTiktokEmbeds(){
+    const old = document.getElementById('tiktok-embed-script');
+    if(old) old.remove();
+    const s = document.createElement('script');
+    s.id = 'tiktok-embed-script';
+    s.src = 'https://www.tiktok.com/embed.js';
+    document.body.appendChild(s);
+  }
+
+  function renderVideosOnPage(urls){
+    const grid = document.getElementById('tiktok-grid');
+    const cleaned = (urls||[]).filter(Boolean);
+    if(!cleaned.length){
+      grid.innerHTML = `<p style="color:rgba(245,239,230,0.4);font-size:14px;">Aucune vidéo ajoutée pour l'instant.</p>`;
+      return;
+    }
+    grid.innerHTML = cleaned.map(url => `
+      <div class="tiktok-card">
+        <blockquote class="tiktok-embed" cite="${url}" data-video-id="" style="max-width:100%;min-width:260px;">
+          <section><a target="_blank" href="${url}">Voir sur TikTok</a></section>
+        </blockquote>
+      </div>
+    `).join('');
+    reloadTiktokEmbeds();
+  }
+
+  let editLinks = [];
+  let editVideos = [];
+
+  async function renderEditor(){
+    let saved = {};
+    try{
+      const r = await window.storage.get('moa-site-content', true);
+      if(r && r.value) saved = JSON.parse(r.value);
+    }catch(e){ /* no saved content yet */ }
+
+    const pseudo = saved.pseudo || document.getElementById('pseudo').textContent;
+    const badgeText = saved.badgeText || document.getElementById('badge-text').textContent;
+    const profilePic = saved.profilePic || '';
+    const tagline = saved.tagline || document.getElementById('tagline').textContent;
+    const stickersEls = Array.from(document.querySelectorAll('#stickers .sticker'));
+    const stickerText = saved.stickers || stickersEls.map(s=>s.textContent.trim()).join('\n');
+    const theme = saved.theme || 'plum';
+    const discordHandle = saved.discordHandle || document.getElementById('discord-handle').textContent;
+    const discordDesc = saved.discordDesc || document.getElementById('discord-desc').textContent;
+    const discordUrl = saved.discordUrl || document.getElementById('discord-btn').href;
+    const footerText = saved.footerText || document.getElementById('footer-text').textContent.trim();
+    editLinks = Array.isArray(saved.links) ? saved.links.slice() : [];
+    editVideos = Array.isArray(saved.videos) ? saved.videos.slice() : [
+      'https://vm.tiktok.com/ZNRE6cF5H/',
+      'https://vm.tiktok.com/ZNREMLJaS/'
+    ];
+
+    const themeOptions = Object.entries(THEMES).map(([key,t])=>
+      `<option value="${key}" ${key===theme?'selected':''}>${t.label}</option>`
+    ).join('');
+
+    content.innerHTML = `
+      <h3>Éditer le site</h3>
+
+      <h4>Profil</h4>
+      <label for="pseudo-input">Pseudo affiché</label>
+      <input type="text" id="pseudo-input" value="${pseudo.replace(/"/g,'&quot;')}" />
+      <label for="badge-input">Badge (au-dessus du pseudo)</label>
+      <input type="text" id="badge-input" value="${badgeText.replace(/"/g,'&quot;')}" />
+      <label for="profilepic-input">URL photo de profil (optionnel)</label>
+      <input type="text" id="profilepic-input" placeholder="https://..." value="${profilePic.replace(/"/g,'&quot;')}" />
+      <label for="tagline-input">Phrase d'accroche</label>
+      <textarea id="tagline-input" rows="2">${tagline}</textarea>
+      <label for="stickers-input">Phrases hype (une par ligne)</label>
+      <textarea id="stickers-input" rows="4">${stickerText}</textarea>
+
+      <h4>Thème de couleur</h4>
+      <label for="theme-select">Choisir un thème</label>
+      <select id="theme-select">${themeOptions}</select>
+
+      <h4>Vidéos TikTok</h4>
+      <div id="videos-editor-list"></div>
+      <div class="panel-row" style="justify-content:flex-start;margin-bottom:12px;">
+        <button class="btn-ghost" id="add-video-btn">+ Ajouter une vidéo</button>
+      </div>
+
+      <h4>Discord</h4>
+      <label for="discord-handle-input">Pseudo affiché</label>
+      <input type="text" id="discord-handle-input" value="${discordHandle.replace(/"/g,'&quot;')}" />
+      <label for="discord-desc-input">Description</label>
+      <input type="text" id="discord-desc-input" value="${discordDesc.replace(/"/g,'&quot;')}" />
+      <label for="discord-url-input">Lien Discord</label>
+      <input type="text" id="discord-url-input" value="${discordUrl.replace(/"/g,'&quot;')}" />
+
+      <h4>Liens</h4>
+      <div id="links-editor-list"></div>
+      <div class="panel-row" style="justify-content:flex-start;margin-bottom:12px;">
+        <button class="btn-ghost" id="add-link-btn">+ Ajouter un lien</button>
+      </div>
+
+      <h4>Footer</h4>
+      <label for="footer-input">Texte du bas de page</label>
+      <input type="text" id="footer-input" value="${footerText.replace(/"/g,'&quot;')}" />
+
+      <div id="status-msg"></div>
+      <div class="panel-row">
+        <button class="btn-ghost" id="cancel-btn">Fermer</button>
+        <button class="btn-solid" id="save-btn">Enregistrer</button>
+      </div>
+    `;
+    renderLinksEditorList();
+    renderVideosEditorList();
+    document.getElementById('add-link-btn').onclick = ()=>{
+      editLinks.push({name:'', url:''});
+      renderLinksEditorList();
+    };
+    document.getElementById('add-video-btn').onclick = ()=>{
+      editVideos.push('');
+      renderVideosEditorList();
+    };
+    document.getElementById('cancel-btn').onclick = closePanel;
+    document.getElementById('save-btn').onclick = saveContent;
+  }
+
+  function renderVideosEditorList(){
+    const wrap = document.getElementById('videos-editor-list');
+    if(!editVideos.length){
+      wrap.innerHTML = `<p style="font-size:12px;color:rgba(245,239,230,0.4);margin:0 0 10px;">Aucune vidéo pour l'instant.</p>`;
+      return;
+    }
+    wrap.innerHTML = editVideos.map((url,i)=>`
+      <div style="display:flex;gap:8px;margin-bottom:8px;align-items:center;">
+        <input type="text" placeholder="https://vm.tiktok.com/..." value="${(url||'').replace(/"/g,'&quot;')}" data-idx="${i}" class="video-url-input" style="margin-bottom:0;flex:1;">
+        <button class="btn-ghost remove-video-btn" data-idx="${i}" style="padding:8px 12px;">✕</button>
+      </div>
+    `).join('');
+    wrap.querySelectorAll('.video-url-input').forEach(inp=>{
+      inp.addEventListener('input', e=>{
+        editVideos[+e.target.dataset.idx] = e.target.value;
+      });
+    });
+    wrap.querySelectorAll('.remove-video-btn').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        editVideos.splice(+e.currentTarget.dataset.idx, 1);
+        renderVideosEditorList();
+      });
+    });
+  }
+
+  function renderLinksEditorList(){
+    const wrap = document.getElementById('links-editor-list');
+    if(!editLinks.length){
+      wrap.innerHTML = `<p style="font-size:12px;color:rgba(245,239,230,0.4);margin:0 0 10px;">Aucun lien pour l'instant.</p>`;
+      return;
+    }
+    wrap.innerHTML = editLinks.map((l,i)=>`
+      <div style="display:flex;gap:8px;margin-bottom:8px;align-items:center;">
+        <input type="text" placeholder="Nom" value="${(l.name||'').replace(/"/g,'&quot;')}" data-idx="${i}" class="link-name-input" style="margin-bottom:0;flex:1;">
+        <input type="text" placeholder="https://..." value="${(l.url||'').replace(/"/g,'&quot;')}" data-idx="${i}" class="link-url-input" style="margin-bottom:0;flex:2;">
+        <button class="btn-ghost" data-idx="${i}" style="padding:8px 12px;" class="remove-link-btn">✕</button>
+      </div>
+    `).join('');
+
+    wrap.querySelectorAll('.link-name-input').forEach(inp=>{
+      inp.addEventListener('input', e=>{
+        editLinks[+e.target.dataset.idx].name = e.target.value;
+      });
+    });
+    wrap.querySelectorAll('.link-url-input').forEach(inp=>{
+      inp.addEventListener('input', e=>{
+        editLinks[+e.target.dataset.idx].url = e.target.value;
+      });
+    });
+    wrap.querySelectorAll('button[data-idx]').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        editLinks.splice(+e.currentTarget.dataset.idx, 1);
+        renderLinksEditorList();
+      });
+    });
+  }
+
+  function renderLinksOnPage(links){
+    const grid = document.getElementById('links-grid');
+    const cleaned = (links||[]).filter(l=>l.name && l.url);
+    if(!cleaned.length){
+      grid.innerHTML = `<p id="links-empty" style="color:rgba(245,239,230,0.4);font-size:14px;">Aucun lien ajouté pour l'instant.</p>`;
+      return;
+    }
+    grid.innerHTML = cleaned.map(l=>{
+      let safeUrl = l.url.trim();
+      if(!/^https?:\/\//i.test(safeUrl)) safeUrl = 'https://' + safeUrl;
+      return `<a class="link-card" href="${safeUrl}" target="_blank" rel="noopener">
+        <span class="link-name">${l.name}</span>
+        <span class="arrow">→</span>
+      </a>`;
+    }).join('');
+  }
+
+  async function saveContent(){
+    const pseudo = document.getElementById('pseudo-input').value.trim();
+    const badgeText = document.getElementById('badge-input').value.trim();
+    const profilePic = document.getElementById('profilepic-input').value.trim();
+    const tagline = document.getElementById('tagline-input').value.trim();
+    const stickerLines = document.getElementById('stickers-input').value
+      .split('\n').map(s=>s.trim()).filter(Boolean);
+    const theme = document.getElementById('theme-select').value;
+    const discordHandle = document.getElementById('discord-handle-input').value.trim();
+    const discordDesc = document.getElementById('discord-desc-input').value.trim();
+    const discordUrl = document.getElementById('discord-url-input').value.trim();
+    const footerText = document.getElementById('footer-input').value.trim();
+    const cleanedLinks = editLinks.filter(l=>l.name && l.url);
+    const cleanedVideos = editVideos.filter(Boolean);
+
+    if(pseudo) document.getElementById('pseudo').textContent = pseudo;
+    if(badgeText) document.getElementById('badge-text').textContent = badgeText;
+    const picEl = document.getElementById('profile-pic');
+    if(profilePic){ picEl.src = profilePic; picEl.style.display = 'inline-block'; }
+    else { picEl.style.display = 'none'; picEl.src = ''; }
+    document.getElementById('tagline').textContent = tagline || document.getElementById('tagline').textContent;
+    const stickerWrap = document.getElementById('stickers');
+    if(stickerLines.length){
+      stickerWrap.innerHTML = stickerLines.map(s=>`<span class="sticker">${s}</span>`).join('');
+    }
+    applyTheme(theme);
+    if(discordHandle) document.getElementById('discord-handle').textContent = discordHandle;
+    if(discordDesc) document.getElementById('discord-desc').textContent = discordDesc;
+    if(discordUrl) document.getElementById('discord-btn').href = discordUrl;
+    if(footerText) document.getElementById('footer-text').textContent = footerText;
+    renderLinksOnPage(cleanedLinks);
+    renderVideosOnPage(cleanedVideos);
+
+    try{
+      await window.storage.set('moa-site-content', JSON.stringify({
+        pseudo: document.getElementById('pseudo').textContent,
+        badgeText: document.getElementById('badge-text').textContent,
+        profilePic,
+        tagline: document.getElementById('tagline').textContent,
+        stickers: stickerLines.join('\n'),
+        theme,
+        discordHandle: document.getElementById('discord-handle').textContent,
+        discordDesc: document.getElementById('discord-desc').textContent,
+        discordUrl: document.getElementById('discord-btn').href,
+        footerText: document.getElementById('footer-text').textContent.trim(),
+        links: cleanedLinks,
+        videos: cleanedVideos
+      }), true);
+      document.getElementById('status-msg').style.color = '#8fd19e';
+      document.getElementById('status-msg').textContent = "Enregistré ✓";
+    }catch(e){
+      document.getElementById('status-msg').textContent = "Erreur lors de l'enregistrement.";
+    }
+  }
+
+  function closePanel(){
+    panel.classList.remove('open');
+    unlocked = false;
+  }
+
+  gear.addEventListener('click', ()=>{
+    panel.classList.add('open');
+    if(unlocked){ renderEditor(); } else { renderLogin(); }
+  });
+
+  // Load any saved content on page load
+  (async function loadSaved(){
+    await checkDiscordCallback();
+    try{
+      const r = await window.storage.get('moa-site-content', true);
+      if(r && r.value){
+        const data = JSON.parse(r.value);
+        if(data.pseudo) document.getElementById('pseudo').textContent = data.pseudo;
+        if(data.badgeText) document.getElementById('badge-text').textContent = data.badgeText;
+        if(data.profilePic){
+          const picEl = document.getElementById('profile-pic');
+          picEl.src = data.profilePic;
+          picEl.style.display = 'inline-block';
+        }
+        if(data.tagline) document.getElementById('tagline').textContent = data.tagline;
+        if(data.stickers){
+          const lines = data.stickers.split('\n').map(s=>s.trim()).filter(Boolean);
+          if(lines.length){
+            document.getElementById('stickers').innerHTML = lines.map(s=>`<span class="sticker">${s}</span>`).join('');
+          }
+        }
+        if(data.theme) applyTheme(data.theme);
+        if(data.discordHandle) document.getElementById('discord-handle').textContent = data.discordHandle;
+        if(data.discordDesc) document.getElementById('discord-desc').textContent = data.discordDesc;
+        if(data.discordUrl) document.getElementById('discord-btn').href = data.discordUrl;
+        if(data.footerText) document.getElementById('footer-text').textContent = data.footerText;
+        if(data.links) renderLinksOnPage(data.links);
+        renderVideosOnPage(Array.isArray(data.videos) ? data.videos : [
+          'https://vm.tiktok.com/ZNRE6cF5H/',
+          'https://vm.tiktok.com/ZNREMLJaS/'
+        ]);
+      } else {
+        renderVideosOnPage([
+          'https://vm.tiktok.com/ZNRE6cF5H/',
+          'https://vm.tiktok.com/ZNREMLJaS/'
+        ]);
+      }
+    }catch(e){
+      renderVideosOnPage([
+        'https://vm.tiktok.com/ZNRE6cF5H/',
+        'https://vm.tiktok.com/ZNREMLJaS/'
+      ]);
+    }
+  })();
+})();
+</script>
+
+</body>
+</html>
